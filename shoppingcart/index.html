@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <title>Carrito agoodshop</title>
+    <link
+      rel="icon"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="shop-name">
+        <h1>agoodshop</h1>
+      </div>
+      <div class="shopping-cart">🛒</div>
+    </header>
+    <main id="wrapper">
+      <section>
+        <table id="table_products">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Unidad</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="product_list"></tbody>
+        </table>
+      </section>
+      <section>
+        <table id="table_total">
+          <thead>
+            <tr>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="total_list">
+            <tr>
+              <td>Total</td>
+              <td>0 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="scripts/Carrito.js"></script>
+    <script src="scripts/validation.js"></script>
+    <script src="scripts/show.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
