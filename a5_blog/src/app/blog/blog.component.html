@@ -1,10 +1,30 @@
-<section class="form"></section>
-<hr />
-<section class="posts">
-  <div class="post" *ngFor="let post of posts">
-    <h2>{{ post.title }}</h2>
-    <img [src]="post.imageUrl" alt="Image for {{ post.title }}" />
-    <p>{{ post.content }}</p>
-    <p>Posted on: {{ post.date }}</p>
-  </div>
-</section>
+<main class="container">
+  <section class="form">
+    <input [(ngModel)]="newPost.title" name="title" placeholder="Title" />
+    <input
+      [(ngModel)]="newPost.imageUrl"
+      name="imageUrl"
+      placeholder="Image URL"
+    />
+    <textarea
+      [(ngModel)]="newPost.content"
+      name="content"
+      placeholder="Content"
+    ></textarea>
+    <input [(ngModel)]="newPost.date" name="date" type="date" />
+    <button (click)="addPost()">Add</button>
+  </section>
+  <hr />
+  <section class="posts">
+    <div class="post" *ngFor="let post of posts">
+      <h2>{{ post.title }}</h2>
+      <img
+        [src]="post.imageUrl"
+        alt="Image for {{ post.title }}"
+        (error)="imageError($event)"
+      />
+      <p>{{ post.content }}</p>
+      <p>Posted on: {{ post.date }}</p>
+    </div>
+  </section>
+</main>

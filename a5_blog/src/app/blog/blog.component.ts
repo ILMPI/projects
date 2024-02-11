@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { IPost } from '../interfaces/ipost.interface';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, FormsModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
 })
 export class BlogComponent {
+  newPost: IPost = { title: '', imageUrl: '', content: '', date: new Date() };
   posts: IPost[] = [
     {
       title: 'Little Robot',
@@ -26,6 +28,22 @@ export class BlogComponent {
       date: new Date(),
     },
   ];
+  imageError(event: any) {
+    event.target.src = '../assets/images/No-Image-Placeholder.svg';
+    event.target.alt = 'No Image Available';
+  }
 
-  addPost(title: string, imageUrl: string, content: string): void {}
+  addPost() {
+    if (
+      this.newPost.title &&
+      this.newPost.imageUrl &&
+      this.newPost.content &&
+      this.newPost.date
+    ) {
+      this.posts.push({ ...this.newPost });
+      this.newPost = { title: '', imageUrl: '', content: '', date: new Date() };
+    } else {
+      alert('All fields are required!');
+    }
+  }
 }
