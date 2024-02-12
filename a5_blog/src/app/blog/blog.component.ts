@@ -43,7 +43,7 @@ export class BlogComponent {
       this.posts.push({ ...this.newPost });
       this.newPost = { title: '', imageUrl: '', content: '', date: new Date() };
     } else {
-      alert('All fields are required!');
+      alert('Make sure you fill in all required fields.');
     }
   }
 }

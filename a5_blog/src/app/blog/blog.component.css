@@ -1,1 +1,41 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
 
+/* Style for the post container */
+.post {
+  width: 320px; /* Set the width of the post */
+  border: 1px solid #ccc; /* Change color as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow - adjust as needed */
+  padding: 20px; /* Spacing inside the container */
+  margin-bottom: 20px; /* Space between posts */
+  margin-left: auto; /* Center the post horizontally */
+  margin-right: auto; /* Center the post horizontally */
+}
+
+/* Centering the title */
+.post h2 {
+  text-align: center; /* Centers the title */
+  margin-bottom: 15px; /* Space below the title */
+}
+
+/* Image styling */
+.post img {
+  display: block; /* Removes default inline behavior */
+  margin: 0 auto; /* Centers the image */
+  width: 300px; /* Fixed width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Optional: adds rounded corners to the image */
+}
+
+/* Content styling to match image width */
+.post p {
+  max-width: 300px; /* Matches the image width */
+  margin: 0 auto 10px; /* Centers the text and adds space below */
+}
+
+.date {
+  font-style: italic;
+  text-align: right;
+}
