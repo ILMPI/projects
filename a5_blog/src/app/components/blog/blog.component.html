@@ -1,6 +1,7 @@
 <main class="container">
   <section class="posts">
-    <div class="post" *ngFor="let post of posts">
+    <div class="post">
+      @for (post of posts; track post) {
       <h2>{{ post.title }}</h2>
       <img
         [src]="post.imageUrl"
@@ -9,7 +10,19 @@
       />
       <p>{{ post.content }}</p>
       <p class="date">Date: {{ post.date | date : "dd/MM/yyyy" }}</p>
+      }
     </div>
+    <!-- with *ngFor -->
+    <!-- <div class="post" *ngFor="let post of posts">
+      <h2>{{ post.title }}</h2>
+      <img
+        [src]="post.imageUrl"
+        alt="Image for {{ post.title }}"
+        (error)="imageError($event)"
+      />
+      <p>{{ post.content }}</p>
+      <p class="date">Date: {{ post.date | date : "dd/MM/yyyy" }}</p>
+    </div> -->
   </section>
   <section class="form">
     <label for="title">Title</label>
