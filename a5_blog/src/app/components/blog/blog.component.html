@@ -8,22 +8,30 @@
         (error)="imageError($event)"
       />
       <p>{{ post.content }}</p>
-      <p class="date">Date: {{ post.date | date : "d/MM/yyyy" }}</p>
+      <p class="date">Date: {{ post.date | date : "dd/MM/yyyy" }}</p>
     </div>
   </section>
   <section class="form">
-    <input [(ngModel)]="newPost.title" name="title" placeholder="Title" />
     <input
-      [(ngModel)]="newPost.imageUrl"
+      [(ngModel)]="newPost.title"
+      name="title"
+      placeholder="Title"
+      required
+    />
+    <input
+      type="url"
       name="imageUrl"
-      placeholder="Image URL"
+      placeholder="Image Url https://example.com/something.png"
+      [(ngModel)]="newPost.imageUrl"
+      required
     />
     <textarea
+      name="message"
+      placeholder="Your message"
       [(ngModel)]="newPost.content"
-      name="content"
-      placeholder="Content"
+      required
     ></textarea>
-    <input [(ngModel)]="newPost.date" name="date" type="date" />
+    <input [(ngModel)]="newPost.date" name="date" type="date" required />
     <button (click)="addPost()">Add</button>
   </section>
 </main>

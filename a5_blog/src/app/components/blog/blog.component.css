@@ -1,11 +1,9 @@
-/* Container and overall layout */
 .container {
-  display: flex; /* Enables flexbox layout */
-  gap: 20px; /* Space between posts and form sections */
+  display: flex;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
 /* Posts section */
