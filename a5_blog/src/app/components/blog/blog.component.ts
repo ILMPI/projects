@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IPost } from '../interfaces/ipost.interface';
-import { NgFor } from '@angular/common';
+import { IPost } from '../../interfaces/ipost.interface';
 import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-blog',
@@ -29,7 +29,7 @@ export class BlogComponent {
     },
   ];
   imageError(event: any) {
-    event.target.src = '../assets/images/No-Image-Placeholder.svg';
+    event.target.src = '../../assets/images/No-Image-Placeholder.svg';
     event.target.alt = 'No Image Available';
   }
 
