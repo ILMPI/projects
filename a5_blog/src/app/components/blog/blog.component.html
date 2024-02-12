@@ -12,26 +12,29 @@
     </div>
   </section>
   <section class="form">
+    <label for="title">Title</label>
     <input
       [(ngModel)]="newPost.title"
       name="title"
-      placeholder="Title"
-      required
+      placeholder="Name of your story"
     />
+    <label for="imageUrl">Image URL</label>
     <input
       type="url"
       name="imageUrl"
-      placeholder="Image Url https://example.com/something.png"
+      placeholder="Image URL"
       [(ngModel)]="newPost.imageUrl"
       required
     />
+    <label for="content">Content</label>
     <textarea
-      name="message"
+      name="content"
       placeholder="Your message"
       [(ngModel)]="newPost.content"
       required
     ></textarea>
-    <input [(ngModel)]="newPost.date" name="date" type="date" required />
+    <label for="date">Date</label>
+    <input [(ngModel)]="newPost.date" name="date" type="date" />
     <button (click)="addPost()">Add</button>
   </section>
 </main>
