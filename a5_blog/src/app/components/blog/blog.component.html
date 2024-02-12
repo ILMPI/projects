@@ -1,6 +1,7 @@
 <main class="container">
   <section class="posts">
     <div class="post">
+      <!-- @For -->
       @for (post of posts; track post) {
       <h2>{{ post.title }}</h2>
       <img
@@ -12,7 +13,7 @@
       <p class="date">Date: {{ post.date | date : "dd/MM/yyyy" }}</p>
       }
     </div>
-    <!-- with *ngFor -->
+    <!-- *ngFor -->
     <!-- <div class="post" *ngFor="let post of posts">
       <h2>{{ post.title }}</h2>
       <img

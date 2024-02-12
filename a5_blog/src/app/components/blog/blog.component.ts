@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { IPost } from '../../interfaces/ipost.interface';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+// import { NgFor } from '@angular/common'; //*ngFor
 import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [NgFor, FormsModule, DatePipe],
+  imports: [/*NgFor,*/ FormsModule, DatePipe], //*ngFor
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
 })
