@@ -1,41 +1,94 @@
+/* Container and overall layout */
 .container {
-  display: flex;
-  justify-content: space-evenly;
+  display: flex; /* Enables flexbox layout */
+  gap: 20px; /* Space between posts and form sections */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-/* Style for the post container */
+/* Posts section */
+.posts {
+  margin-bottom: 40px;
+  flex: 2;
+}
+
 .post {
-  width: 320px; /* Set the width of the post */
-  border: 1px solid #ccc; /* Change color as needed */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow - adjust as needed */
-  padding: 20px; /* Spacing inside the container */
-  margin-bottom: 20px; /* Space between posts */
-  margin-left: auto; /* Center the post horizontally */
-  margin-right: auto; /* Center the post horizontally */
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Centering the title */
 .post h2 {
-  text-align: center; /* Centers the title */
-  margin-bottom: 15px; /* Space below the title */
+  color: #333;
+  margin-bottom: 10px;
 }
 
-/* Image styling */
 .post img {
-  display: block; /* Removes default inline behavior */
-  margin: 0 auto; /* Centers the image */
-  width: 300px; /* Fixed width */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 5px; /* Optional: adds rounded corners to the image */
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Content styling to match image width */
 .post p {
-  max-width: 300px; /* Matches the image width */
-  margin: 0 auto 10px; /* Centers the text and adds space below */
+  color: #666;
+  line-height: 1.6;
+  text-align: justify;
 }
 
-.date {
+.post .date {
   font-style: italic;
+  color: #999;
   text-align: right;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form input,
+.form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form textarea {
+  height: 200px;
+}
+
+.form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #0056b3;
+}
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .posts,
+  .form {
+    flex: none;
+    width: 100%;
+  }
+
+  .post img {
+    max-width: 100%;
+  }
 }

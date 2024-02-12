@@ -2,5 +2,5 @@ export interface IPost {
   title: string;
   imageUrl: string;
   content: string;
-  date: Date;
+  date: string;
 }

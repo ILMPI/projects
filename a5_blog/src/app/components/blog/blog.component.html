@@ -8,7 +8,7 @@
         (error)="imageError($event)"
       />
       <p>{{ post.content }}</p>
-      <p class="date">Date: {{ post.date }}</p>
+      <p class="date">Date: {{ post.date | date : "d/MM/yyyy" }}</p>
     </div>
   </section>
   <section class="form">
