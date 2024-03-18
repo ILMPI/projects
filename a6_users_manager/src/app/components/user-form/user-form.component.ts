@@ -3,18 +3,22 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule,ReactiveFormsModule,NgIf],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent implements OnInit {
     user: any = {};
     userForm: FormGroup;
+    formTitle: string = 'New User'; // Default title
+    editButtonText: string = 'Edit';
+    addButtonText: string = 'Save';
   
     constructor(
       private fb: FormBuilder,
@@ -36,6 +40,7 @@ export class UserFormComponent implements OnInit {
       if (_id) {
         this.userService.getUser(_id).subscribe(user => {
           this.user = user;
+          this.formTitle = 'Edit User';
         });
       }
     });

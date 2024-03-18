@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="row">
+      <div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+        <img src="{{ user.image }}" alt="User profile picture" class="rounded-circle img-fluid">
+      </div>
+      <div class="d-none d-md-block col-md-1">
+        <div class="vr" style="height: 100%;"></div>
+      </div>
+      <div class="col-12 col-md-7 d-flex flex-column justify-content-center">
+        <h2 class="my-2">{{ user.first_name }}</h2>
+        <h2 class="my-2">{{ user.last_name }}</h2>
+        <p class="my-2"><strong>Nombre Usuario:</strong> {{ user.username }}</p>
+        <p class="my-2"><strong>Email:</strong> {{ user.email }}</p>
+        <div class="d-flex justify-content-center my-3">
+         <button class="btn btn-light w-50 me-2" (click)="helper.deleteConfirm(user._id, true)">Borrar</button>
+         <a class="btn btn-light w-50 me-2" [routerLink]="['/updateuser', user._id]">Actualizar</a>
+          <a class="btn btn-light w-50" routerLink="/home">Volver a listado</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

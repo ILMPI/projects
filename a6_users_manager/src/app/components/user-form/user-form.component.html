@@ -3,6 +3,7 @@
     <div class="col-md-6">
       <form (ngSubmit)="onSubmit()" class="p-3 border rounded">
         <div class="d-flex justify-content-end">
+          <h2>{{ formTitle }}</h2>
          <!-- <button type="button" class="btn-close" aria-label="Close" routerLink="/home"></button>-->
         </div>
           <div class="mb-3">
@@ -26,8 +27,12 @@
             <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
           </div>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+              <span *ngIf="user?._id; else addNewUser">{{ editButtonText }}</span>
+              <ng-template #addNewUser>{{ addButtonText }}</ng-template>
+            </button>
           </div>
+          
         </form>
     </div>
   </div>
