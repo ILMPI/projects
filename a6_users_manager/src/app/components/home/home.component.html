@@ -16,11 +16,16 @@
               <a class="btn btn-light" (click)="editUser(user._id)">
                 <i class="fas fa-sync-alt mb-1" style="font-size: 1.5rem;"></i><br>
                 Edit
-              </a>              
-              <button class="btn btn-light" (click)="deleteConfirm(user._id)">
+              </a>
+              <button class="btn btn-light" (click)="helper.deleteConfirm(user._id, false)">
                 <i class="fas fa-trash mb-1" style="font-size: 1.5rem;"></i><br>
                 Delete
               </button>
+                            
+              <!-- <button class="btn btn-light" (click)="deleteConfirm(user._id)">
+                <i class="fas fa-trash mb-1" style="font-size: 1.5rem;"></i><br>
+                Delete
+              </button> -->
             </div>
           </div>
         </div>

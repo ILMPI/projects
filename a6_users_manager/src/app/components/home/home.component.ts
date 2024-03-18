@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../interfaces/iuser.interface';
 import Swal from 'sweetalert2';
+import { HelperService } from '../../services/helper.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   users: IUser[] = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    public helper: HelperService
   ) {}
 
   ngOnInit(): void {
