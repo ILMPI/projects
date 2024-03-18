@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+
+    <!--card-->
+    @for(user of users; track user._id){
+      <div class="col-md-3 mb-4">
+        <div class="card text-center shadow" style="border-radius: 0.5rem; max-width: 18rem; height: 100%;">
+          <img [src]="user.image" class="card-img-top rounded-circle mx-auto mt-3" style="width: 50%;" alt="User Image" />
+          <div class="card-body">
+            <h5 class="card-title" style="min-height: 4.5em;">{{ user.first_name }} {{ user.last_name }}</h5>
+            <div class="d-flex justify-content-between align-items-center" style="gap: 10px;">
+              <a class="btn btn-light" routerLink="/user/{{user._id}}">
+                <i class="fas fa-search mb-1" style="font-size: 1.5rem;"></i><br>
+                Details
+              </a>
+              <a class="btn btn-light" (click)="editUser(user._id)">
+                <i class="fas fa-sync-alt mb-1" style="font-size: 1.5rem;"></i><br>
+                Edit
+              </a>              
+              <button class="btn btn-light" (click)="deleteConfirm(user._id)">
+                <i class="fas fa-trash mb-1" style="font-size: 1.5rem;"></i><br>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
