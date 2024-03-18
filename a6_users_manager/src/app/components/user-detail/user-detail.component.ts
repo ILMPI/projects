@@ -3,6 +3,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../interfaces/iuser.interface';
 import Swal from 'sweetalert2';
+import { HelperService } from '../../services/helper.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class UserDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
+    public helper: HelperService,
   ) {}
 
   ngOnInit(): void {
@@ -42,15 +44,12 @@ export class UserDetailComponent implements OnInit{
     });
   }
 
-  goBack(): void {
-    this.router.navigate(['/home']);
-  }
 
   editUser(_id: string): void {
     this.router.navigate(['/updateuser', _id]);
   }
 
-  deleteConfirm(_id: string): void {
+  /*deleteConfirm(_id: string): void {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -82,6 +81,6 @@ export class UserDetailComponent implements OnInit{
       }
     });
   }
-  
+  */
 
 }

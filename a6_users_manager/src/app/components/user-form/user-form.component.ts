@@ -13,23 +13,6 @@ import Swal from 'sweetalert2';
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent implements OnInit {
-/* export class UserFormComponent implements OnInit {
-  userForm: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    this.userForm = this.fb.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]]
-    });
-  }*/
     user: any = {};
     userForm: FormGroup;
   
@@ -57,6 +40,8 @@ export class UserFormComponent implements OnInit {
       }
     });
   }
+
+
   onSubmit(): void {
     const operation = this.user._id ? 'updateUser' : 'createUser';
     this.userService[operation](this.user).subscribe({
@@ -74,6 +59,8 @@ export class UserFormComponent implements OnInit {
       }
     });
   }
+
+
   }
   
 

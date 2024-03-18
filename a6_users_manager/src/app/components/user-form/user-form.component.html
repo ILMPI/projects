@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <form (ngSubmit)="onSubmit()" class="p-3 border rounded">
+        <div class="d-flex justify-content-end">
+         <!-- <button type="button" class="btn-close" aria-label="Close" routerLink="/home"></button>-->
+        </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" [(ngModel)]="user.first_name" name="first_name" required>

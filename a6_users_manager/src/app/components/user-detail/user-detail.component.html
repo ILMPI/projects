@@ -13,9 +13,10 @@
         <p class="my-2"><strong>Username:</strong> {{ user.username }}</p>
         <p class="my-2"><strong>Email:</strong> {{ user.email }}</p>
         <div class="d-flex justify-content-center my-3">
-          <button class="btn btn-light w-50 me-2" (click)="deleteConfirm(user._id)">Delete</button>
+         <!-- <button class="btn btn-light w-50 me-2" (click)="deleteConfirm(user._id)">Delete</button>-->
+         <button class="btn btn-light w-50 me-2" (click)="helper.deleteConfirm(user._id, true)">Delete</button>
          <a class="btn btn-light w-50 me-2" (click)="editUser(user._id)">Edit</a>
-          <a class="btn btn-light w-50" (click)="goBack()">Back</a>
+          <a class="btn btn-light w-50" routerLink="/home">Back</a>
         </div>
       </div>
     </div>
