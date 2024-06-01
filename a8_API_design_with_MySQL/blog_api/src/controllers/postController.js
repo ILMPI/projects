@@ -1,30 +1,30 @@
-const Post = require('../models/postModel'); // Import the Post model.
-const Author = require('../models/authorModel'); // Import the Author model.
+const Post = require('../models/postModel');
 
-// Function to get all posts
 exports.getAllPosts = (req, res) => {
     Post.getAll((err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
+        } else if (results.length === 0) {
+            res.status(404).json({ message: "No posts found" });
         } else {
-            res.json(results); // If successful, send the results as a JSON response.
+            res.json(results);
         }
     });
 };
 
-// Function to get a post by ID
 exports.getPostById = (req, res) => {
     const id = req.params.id;
     Post.getById(id, (err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
+        } else if (results.length === 0) {
+            res.status(404).json({ message: "This post doesn't exist" });
         } else {
-            res.json(results[0]); // If successful, send the first result as a JSON response.
+            res.json(results[0]);
         }
     });
 };
 
-// Function to create a new post
 exports.createPost = (req, res) => {
     const newPost = {
         ...req.body,
@@ -34,44 +34,47 @@ exports.createPost = (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(201).json({ id: results.insertId });
+            res.status(201).json({ message: `Post #${results.insertId} was created successfully` });
         }
     });
 };
 
-// Function to update a post by ID
 exports.updatePost = (req, res) => {
     const id = req.params.id;
     const updatedPost = req.body;
     Post.update(id, updatedPost, (err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
+        } else if (results.affectedRows === 0) {
+            res.status(404).json({ message: "This post doesn't exist" });
         } else {
-            res.json(results); // If successful, send the results as a JSON response.
+            res.json({ message: "Post updated successfully" });
         }
     });
 };
 
-// Function to delete a post by ID
 exports.deletePost = (req, res) => {
     const id = req.params.id;
     Post.delete(id, (err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
+        } else if (results.affectedRows === 0) {
+            res.status(404).json({ message: "This post doesn't exist" });
         } else {
-            res.json(results); // If successful, send the results as a JSON response.
+            res.json({ message: "Post deleted successfully" });
         }
     });
 };
 
-// Function to get posts by author ID
 exports.getPostsByAuthor = (req, res) => {
     const authorId = req.params.authorId;
     Post.getByAuthor(authorId, (err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
+        } else if (results.length === 0) {
+            res.status(404).json({ message: "Oops, looks like what you are looking for doesn't exist" });
         } else {
-            res.json(results); // If successful, send the results as a JSON response.
+            res.json(results);
         }
     });
 };

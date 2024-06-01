@@ -1,16 +1,16 @@
-const express = require('express'); // Import the Express module.
-const authorRoutes = require('./routes/authorRoutes'); // Import the Author routes.
-const postRoutes = require('./routes/postRoutes'); // Import the Post routes.
+const express = require('express');
+const authorRoutes = require('./routes/authorRoutes');
+const postRoutes = require('./routes/postRoutes');
 
-const app = express(); // Create an instance of an Express application.
-const PORT = process.env.PORT || 3000; // Set the port number.
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); // Use middleware to parse JSON bodies.
-app.use(express.urlencoded({ extended: true })); // Use middleware to parse URL-encoded bodies.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/authors', authorRoutes); // Use the Author routes with the prefix /api/authors.
-app.use('/api/posts', postRoutes); // Use the Post routes with the prefix /api/posts.
+app.use('/api/authors', authorRoutes);
+app.use('/api/posts', postRoutes);
 
-app.listen(PORT, () => { // Start the server and listen on the specified port.
-    console.log(`Server is running on port ${PORT}`); // Log a message when the server starts.
+app.listen(PORT, () => {
+    console.log(`Server is waiting for you being fully prepeared on port ${PORT}`);
 });

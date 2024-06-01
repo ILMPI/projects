@@ -1,6 +1,6 @@
-const db = require('../config/db'); // Import the database connection.
+const db = require('../config/db');
 
-const Post = { // Define the Post model.
+const Post = {
     getAll: (callback) => {
         const query = `
             SELECT 
@@ -16,7 +16,7 @@ const Post = { // Define the Post model.
             FROM posts
             JOIN authors ON posts.authors_author_id = authors.author_id
         `;
-        db.query(query, callback); // Query to get all posts with author details.
+        db.query(query, callback);
     },
     getById: (id, callback) => {
         const query = `
@@ -34,16 +34,16 @@ const Post = { // Define the Post model.
             JOIN authors ON posts.authors_author_id = authors.author_id
             WHERE posts.post_id = ?
         `;
-        db.query(query, [id], callback); // Query to get a post by ID with author details.
+        db.query(query, [id], callback);
     },
     create: (post, callback) => {
-        db.query('INSERT INTO posts SET ?', post, callback); // Query to create a new post.
+        db.query('INSERT INTO posts SET ?', post, callback);
     },
     update: (id, post, callback) => {
-        db.query('UPDATE posts SET ? WHERE post_id = ?', [post, id], callback); // Query to update a post by ID.
+        db.query('UPDATE posts SET ? WHERE post_id = ?', [post, id], callback);
     },
     delete: (id, callback) => {
-        db.query('DELETE FROM posts WHERE post_id = ?', [id], callback); // Query to delete a post by ID.
+        db.query('DELETE FROM posts WHERE post_id = ?', [id], callback);
     },
     getByAuthor: (authorId, callback) => {
         const query = `
@@ -61,8 +61,8 @@ const Post = { // Define the Post model.
             JOIN authors ON posts.authors_author_id = authors.author_id
             WHERE posts.authors_author_id = ?
         `;
-        db.query(query, [authorId], callback); // Query to get posts by author ID with author details.
+        db.query(query, [authorId], callback);
     }
 };
 
-module.exports = Post; // Export the Post model to be used in other parts of the application.
+module.exports = Post;
