@@ -1,6 +1,6 @@
 const Author = require('../models/authorModel'); // Import the Author model.
 
-// Function to get all authors
+//get all authors
 exports.getAllAuthors = (req, res) => {
     Author.getAll((err, results) => {
         if (err) {
@@ -11,7 +11,7 @@ exports.getAllAuthors = (req, res) => {
     });
 };
 
-// Function to get an author by ID
+//get author by ID
 exports.getAuthorById = (req, res) => {
     const id = req.params.id;
     Author.getById(id, (err, results) => {
@@ -23,7 +23,7 @@ exports.getAuthorById = (req, res) => {
     });
 };
 
-// Function to create a new author
+//create a new author
 exports.createAuthor = (req, res) => {
     const newAuthor = req.body;
     Author.create(newAuthor, (err, results) => {
@@ -35,7 +35,7 @@ exports.createAuthor = (req, res) => {
     });
 };
 
-// Function to update an author by ID
+//update author by ID
 exports.updateAuthor = (req, res) => {
     const id = req.params.id;
     const updatedAuthor = req.body;
@@ -48,14 +48,14 @@ exports.updateAuthor = (req, res) => {
     });
 };
 
-// Function to delete an author by ID
+//delete author by ID
 exports.deleteAuthor = (req, res) => {
     const id = req.params.id;
     Author.delete(id, (err, results) => {
         if (err) {
-            res.status(500).send(err); // If there's an error, send a 500 status code and the error message.
+            res.status(500).send(err);
         } else {
-            res.json(results); // If successful, send the results as a JSON response.
+            res.json(results);
         }
     });
 };
