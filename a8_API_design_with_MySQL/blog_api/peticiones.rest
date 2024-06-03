@@ -1,0 +1,67 @@
+@PORT = 3000
+@HOST = http://localhost:{{PORT}}
+
+
+### Get All Authors
+GET {{HOST}}/api/authors
+
+### Get Author by Id
+GET {{HOST}}/api/authors/1
+
+### Create Author
+POST {{HOST}}/api/authors
+Content-Type: application/json
+
+{
+    "name": "Daphne du Maurier",
+    "email": "daphne.dumaurier@gmail.com",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Young_Daphne_du_Maurier_restored_bw.jpg/220px-Young_Daphne_du_Maurier_restored_bw.jpg"
+}
+
+### Update Author
+PUT {{HOST}}/api/authors/5
+Content-Type: application/json
+
+{
+    "name": "Daphne du Maurier Updated",
+    "email": "daphne.dumaurier.updated@gmail.com",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Young_Daphne_du_Maurier_restored_bw.jpg/220px-Young_Daphne_du_Maurier_restored_bw.jpg"
+}
+
+### Delete Author
+DELETE {{HOST}}/api/authors/1
+
+
+### Get All Posts
+GET {{HOST}}/api/posts
+
+### Get Post by Id
+GET {{HOST}}/api/posts/7
+
+### Create Post
+POST {{HOST}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "The Birds",
+    "description": "Then he saw them. The gulls. Out there, riding the seas. What he had thought at first to be the white caps of the waves were gulls. Hundreds, thousands, tens of thousands... They rose and fell in the trough of the seas, heads to the wind, like a mighty fleet at anchor, waiting on the tide. To eastward, and to the west, the gulls were there. They stretched as far as his eye could reach, in close formation, line upon line. Had the sea been still they would have covered the bay like a white cloud, head to head, body packed to body. Only the east wind, whipping the sea to breakers, hid them from the shore.", 
+    "category": "Literature",
+    "authors_author_id": 5
+}
+
+### Update Post
+PUT {{HOST}}/api/posts/1
+Content-Type: application/json
+
+{
+    "title": "The Birds Updated",
+    "description": "You have to endure something yourself before it touched you.",
+    "category": "Literature",
+    "authors_author_id": 5
+}
+
+### Delete Post
+DELETE {{HOST}}/api/posts/1
+
+### Get Posts by Author Id
+GET {{HOST}}/api/posts/author/2

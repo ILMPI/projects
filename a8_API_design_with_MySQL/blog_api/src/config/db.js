@@ -1,5 +1,6 @@
 const mysql = require('mysql');
-require('dotenv').config(); // Load environment variables from .env file
+const util = require('util');
+require('dotenv').config();
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -12,5 +13,7 @@ connection.connect((err) => {
     if (err) throw err;
     console.log('Successfully connected to MySQL Database.');
 });
+
+connection.query = util.promisify(connection.query);
 
 module.exports = connection;

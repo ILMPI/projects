@@ -1,20 +1,45 @@
 const db = require('../config/db');
 
 const Author = {
-    getAll: (callback) => {
-        db.query('SELECT * FROM authors', callback);
+    getAll: () => {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM authors', (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
     },
-    getById: (id, callback) => {
-        db.query('SELECT * FROM authors WHERE author_id = ?', [id], callback);
+    getById: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM authors WHERE author_id = ?', [id], (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
     },
-    create: (author, callback) => {
-        db.query('INSERT INTO authors SET ?', author, callback);
+    create: (author) => {
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO authors SET ?', author, (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
     },
-    update: (id, author, callback) => {
-        db.query('UPDATE authors SET ? WHERE author_id = ?', [author, id], callback);
+    update: (id, author) => {
+        return new Promise((resolve, reject) => {
+            db.query('UPDATE authors SET ? WHERE author_id = ?', [author, id], (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
     },
-    delete: (id, callback) => {
-        db.query('DELETE FROM authors WHERE author_id = ?', [id], callback);
+    delete: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query('DELETE FROM authors WHERE author_id = ?', [id], (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
     }
 };
 

@@ -1,80 +1,84 @@
 const Post = require('../models/postModel');
 
-exports.getAllPosts = (req, res) => {
-    Post.getAll((err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else if (results.length === 0) {
+exports.getAllPosts = async (req, res) => {
+    try {
+        const results = await Post.getAll();
+        if (results.length === 0) {
             res.status(404).json({ message: "No posts found" });
         } else {
             res.json(results);
         }
-    });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.getPostById = (req, res) => {
-    const id = req.params.id;
-    Post.getById(id, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else if (results.length === 0) {
+exports.getPostById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const results = await Post.getById(id);
+        if (results.length === 0) {
             res.status(404).json({ message: "This post doesn't exist" });
         } else {
             res.json(results[0]);
         }
-    });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.createPost = (req, res) => {
-    const newPost = {
-        ...req.body,
-        creation_date: new Date().toISOString().split('T')[0] // Set the creation date to today
-    };
-    Post.create(newPost, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).json({ message: `Post #${results.insertId} was created successfully` });
-        }
-    });
+exports.createPost = async (req, res) => {
+    try {
+        const newPost = {
+            ...req.body,
+            creation_date: new Date().toISOString().split('T')[0] // Set the creation date to today
+        };
+        const results = await Post.create(newPost);
+        res.status(201).json({ message: `Post #${results.insertId} was created successfully` });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.updatePost = (req, res) => {
-    const id = req.params.id;
-    const updatedPost = req.body;
-    Post.update(id, updatedPost, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else if (results.affectedRows === 0) {
+exports.updatePost = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updatedPost = req.body;
+        const results = await Post.update(id, updatedPost);
+        if (results.affectedRows === 0) {
             res.status(404).json({ message: "This post doesn't exist" });
         } else {
             res.json({ message: "Post updated successfully" });
         }
-    });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.deletePost = (req, res) => {
-    const id = req.params.id;
-    Post.delete(id, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else if (results.affectedRows === 0) {
+exports.deletePost = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const results = await Post.delete(id);
+        if (results.affectedRows === 0) {
             res.status(404).json({ message: "This post doesn't exist" });
         } else {
             res.json({ message: "Post deleted successfully" });
         }
-    });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.getPostsByAuthor = (req, res) => {
-    const authorId = req.params.authorId;
-    Post.getByAuthor(authorId, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-        } else if (results.length === 0) {
+exports.getPostsByAuthor = async (req, res) => {
+    try {
+        const authorId = req.params.authorId;
+        const results = await Post.getByAuthor(authorId);
+        if (results.length === 0) {
             res.status(404).json({ message: "Oops, looks like what you are looking for doesn't exist" });
         } else {
             res.json(results);
         }
-    });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
