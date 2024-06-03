@@ -26,11 +26,12 @@ DROP TABLE IF EXISTS `authors`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `authors` (
   `author_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Julio Cortazar','julio.cortazar@gmail.com','https://upload.wikimedia.org/wikipedia/commons/1/19/Cort%C3%A1zar.jpg'),(2,'Ernest Hemingway','hemingway@gmail.com','hhttps://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/220px-ErnestHemingway.jpg'),(3,'Banana Yoshimoto','banana_yoshimoto@gmail.com','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1386368930i/28229._UX200_CR0,52,200,200_.jpg'),(4,'Mark Twain','twain@gmail.com','https://en.wikipedia.org/wiki/Mark_Twain#/media/File:Mark_Twain_by_AF_Bradley.jpg');
+INSERT INTO `authors` VALUES (1,'Julio Cortazar','julio.cortazar@gmail.com','https://upload.wikimedia.org/wikipedia/commons/1/19/Cort%C3%A1zar.jpg',1),(2,'Ernest Hemingway','hemingway@gmail.com','hhttps://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/220px-ErnestHemingway.jpg',1),(3,'Banana Yoshimoto','banana_yoshimoto@gmail.com','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1386368930i/28229._UX200_CR0,52,200,200_.jpg',1),(4,'Mark Twain','twain@gmail.com','https://en.wikipedia.org/wiki/Mark_Twain#/media/File:Mark_Twain_by_AF_Bradley.jpg',1);
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,15 +53,15 @@ DROP TABLE IF EXISTS `posts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `posts` (
   `post_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `creation_date` date NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `authors_author_id` int NOT NULL,
   PRIMARY KEY (`post_id`),
   KEY `fk_posts_authors_idx` (`authors_author_id`),
   CONSTRAINT `fk_posts_authors` FOREIGN KEY (`authors_author_id`) REFERENCES `authors` (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-01 17:04:39
+-- Dump completed on 2024-06-03 17:34:54

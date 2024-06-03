@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Update Author
-PUT {{HOST}}/api/authors/5
+PUT {{HOST}}/api/authors/7
 Content-Type: application/json
 
 {
@@ -46,7 +46,7 @@ Content-Type: application/json
     "title": "The Birds",
     "description": "Then he saw them. The gulls. Out there, riding the seas. What he had thought at first to be the white caps of the waves were gulls. Hundreds, thousands, tens of thousands... They rose and fell in the trough of the seas, heads to the wind, like a mighty fleet at anchor, waiting on the tide. To eastward, and to the west, the gulls were there. They stretched as far as his eye could reach, in close formation, line upon line. Had the sea been still they would have covered the bay like a white cloud, head to head, body packed to body. Only the east wind, whipping the sea to breakers, hid them from the shore.", 
     "category": "Literature",
-    "authors_author_id": 5
+    "authors_author_id": 7
 }
 
 ### Update Post
@@ -57,7 +57,7 @@ Content-Type: application/json
     "title": "The Birds Updated",
     "description": "You have to endure something yourself before it touched you.",
     "category": "Literature",
-    "authors_author_id": 5
+    "authors_author_id": 7
 }
 
 ### Delete Post

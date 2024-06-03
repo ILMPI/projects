@@ -3,7 +3,7 @@ const db = require('../config/db');
 const Author = {
     getAll: () => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM authors', (err, results) => {
+            db.query('SELECT * FROM authors WHERE is_active = TRUE', (err, results) => {
                 if (err) reject(err);
                 else resolve(results);
             });
@@ -11,7 +11,7 @@ const Author = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM authors WHERE author_id = ?', [id], (err, results) => {
+            db.query('SELECT * FROM authors WHERE author_id = ? AND is_active = TRUE', [id], (err, results) => {
                 if (err) reject(err);
                 else resolve(results);
             });
@@ -36,6 +36,14 @@ const Author = {
     delete: (id) => {
         return new Promise((resolve, reject) => {
             db.query('DELETE FROM authors WHERE author_id = ?', [id], (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+            });
+        });
+    },
+    markAsInactive: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query('UPDATE authors SET is_active = FALSE WHERE author_id = ?', [id], (err, results) => {
                 if (err) reject(err);
                 else resolve(results);
             });

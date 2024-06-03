@@ -1,4 +1,5 @@
 const Author = require('../models/authorModel');
+const Post = require('../models/postModel');
 
 exports.getAllAuthors = async (req, res) => {
     try {
@@ -55,13 +56,20 @@ exports.updateAuthor = async (req, res) => {
 exports.deleteAuthor = async (req, res) => {
     try {
         const id = req.params.id;
-        const results = await Author.delete(id);
-        if (results.affectedRows === 0) {
-            res.status(404).json({ message: "This author doesn't exist" });
+        const postResults = await Post.getByAuthor(id);
+
+        if (postResults.length > 0) {
+            await Author.markAsInactive(id);
+            return res.status(200).json({ message: "Author cannot be deleted because they have associated posts. Marking as inactive instead." });
         } else {
-            res.json({ message: "Author deleted successfully" });
+            const results = await Author.delete(id);
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ message: "This author doesn't exist" });
+            } else {
+                return res.status(200).json({ message: "Author deleted successfully" });
+            }
         }
     } catch (err) {
-        res.status(500).send(err);
+        return res.status(500).send(err);
     }
 };
